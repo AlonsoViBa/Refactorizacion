@@ -1,18 +1,21 @@
 package edu.ncsu.monopoly;
 
-public abstract class Cell {
+public abstract class Cell implements IOwnable {
 	private String name;
 	protected Player propietario;
 	private boolean available = true;
 
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public Player getPropietario() {
 		return propietario;
 	}
 	
+	@Override
 	public int getPrice() {
 		return 0;
 	}
@@ -23,6 +26,7 @@ public abstract class Cell {
 		this.name = name;
 	}
 
+	@Override
 	public void setPropietario(Player owner) {
 		this.propietario = owner;
 	}

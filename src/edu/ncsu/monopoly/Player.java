@@ -25,7 +25,7 @@ public class Player {
 		}
 	}
 
-    public void buyProperty(Cell property, int amount) {
+    public void buyProperty(IOwnable property, int amount) {
         property.setPropietario(this);
         if(property instanceof PropertyCell) {
             PropertyCell cell = (PropertyCell)property;
@@ -55,7 +55,7 @@ public class Player {
 
 	public boolean checkProperty(String property) {
 		for(int i=0;i<properties.size();i++) {
-			Cell cell = (Cell)properties.get(i);
+			IOwnable cell = (IOwnable)properties.get(i);
 			if(cell.getName().equals(property)) {
 				return true;
 			}
@@ -82,12 +82,12 @@ public class Player {
 		properties.clear();
 	}
     
-    public Cell[] getAllProperties() {
+    public IOwnable[] getAllProperties() {
         ArrayList list = new ArrayList();
         list.addAll(properties);
         list.addAll(utilities);
         list.addAll(railroads);
-        return (Cell[])list.toArray(new Cell[list.size()]);
+        return (IOwnable[])list.toArray(new IOwnable[list.size()]);
     }
 
 	public int getMoney() {
@@ -221,7 +221,7 @@ public class Player {
 	    buyProperty(cell, cell.getPrice());
 	}
 
-    public void sellProperty(Cell property, int amount) {
+    public void sellProperty(IOwnable property, int amount) {
         property.setPropietario(null);
         if(property instanceof PropertyCell) {
             properties.remove(property);
